@@ -1,3 +1,10 @@
+
+using Microsoft.VisualBasic;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using SwinGameSDK;
 
 /// <summary>
@@ -69,15 +76,15 @@ public static class GameController
 
 		//create the players
 		switch (_aiSetting) {
-		case AIOption.Medium:
-			_ai = new AIMediumPlayer(_theGame);
-			break;
-		case AIOption.Hard:
-			_ai = new AIHardPlayer(_theGame);
-			break;
-		default:
-			_ai = new AIHardPlayer(_theGame);
-			break;
+			case AIOption.Medium:
+				_ai = new AIMediumPlayer(_theGame);
+				break;
+			case AIOption.Hard:
+				_ai = new AIHardPlayer(_theGame);
+				break;
+			default:
+				_ai = new AIHardPlayer(_theGame);
+				break;
 		}
 
 		_human = new Player(_theGame);
@@ -154,36 +161,36 @@ public static class GameController
 		}
 
 		switch (result.Value) {
-		case ResultOfAttack.Destroyed:
-			PlayHitSequence(result.Row, result.Column, isHuman);
-			Audio.PlaySoundEffect(GameSound("Sink"));
+			case ResultOfAttack.Destroyed:
+				PlayHitSequence(result.Row, result.Column, isHuman);
+				Audio.PlaySoundEffect(GameSound("Sink"));
 
-			break;
-		case ResultOfAttack.GameOver:
-			PlayHitSequence(result.Row, result.Column, isHuman);
-			Audio.PlaySoundEffect(GameSound("Sink"));
+				break;
+			case ResultOfAttack.GameOver:
+				PlayHitSequence(result.Row, result.Column, isHuman);
+				Audio.PlaySoundEffect(GameSound("Sink"));
 
-			while (Audio.SoundEffectPlaying(GameSound("Sink"))) {
-				SwinGame.Delay(10);
-				SwinGame.RefreshScreen();
-			}
+				while (Audio.SoundEffectPlaying(GameSound("Sink"))) {
+					SwinGame.Delay(10);
+					SwinGame.RefreshScreen();
+				}
 
-			if (HumanPlayer.IsDestroyed) {
-				Audio.PlaySoundEffect(GameSound("Lose"));
-			} else {
-				Audio.PlaySoundEffect(GameSound("Winner"));
-			}
+				if (HumanPlayer.IsDestroyed) {
+					Audio.PlaySoundEffect(GameSound("Lose"));
+				} else {
+					Audio.PlaySoundEffect(GameSound("Winner"));
+				}
 
-			break;
-		case ResultOfAttack.Hit:
-			PlayHitSequence(result.Row, result.Column, isHuman);
-			break;
-		case ResultOfAttack.Miss:
-			PlayMissSequence(result.Row, result.Column, isHuman);
-			break;
-		case ResultOfAttack.ShotAlready:
-			Audio.PlaySoundEffect(GameSound("Error"));
-			break;
+				break;
+			case ResultOfAttack.Hit:
+				PlayHitSequence(result.Row, result.Column, isHuman);
+				break;
+			case ResultOfAttack.Miss:
+				PlayMissSequence(result.Row, result.Column, isHuman);
+				break;
+			case ResultOfAttack.ShotAlready:
+				Audio.PlaySoundEffect(GameSound("Error"));
+				break;
 		}
 	}
 
@@ -243,13 +250,13 @@ public static class GameController
 	private static void CheckAttackResult(AttackResult result)
 	{
 		switch (result.Value) {
-		case ResultOfAttack.Miss:
-			if (object.ReferenceEquals(_theGame.Player, ComputerPlayer))
-				AIAttack();
-			break;
-		case ResultOfAttack.GameOver:
-			SwitchState(GameState.EndingGame);
-			break;
+			case ResultOfAttack.Miss:
+				if (object.ReferenceEquals(_theGame.Player, ComputerPlayer))
+					AIAttack();
+				break;
+			case ResultOfAttack.GameOver:
+				SwitchState(GameState.EndingGame);
+				break;
 		}
 	}
 
@@ -267,27 +274,27 @@ public static class GameController
 		SwinGame.ProcessEvents();
 
 		switch (CurrentState) {
-		case GameState.ViewingMainMenu:
-			HandleMainMenuInput();
-			break;
-		case GameState.ViewingGameMenu:
-			HandleGameMenuInput();
-			break;
-		case GameState.AlteringSettings:
-			HandleSetupMenuInput();
-			break;
-		case GameState.Deploying:
-			HandleDeploymentInput();
-			break;
-		case GameState.Discovering:
-			HandleDiscoveryInput();
-			break;
-		case GameState.EndingGame:
-			HandleEndOfGameInput();
-			break;
-		case GameState.ViewingHighScores:
-			HandleHighScoreInput();
-			break;
+			case GameState.ViewingMainMenu:
+				HandleMainMenuInput();
+				break;
+			case GameState.ViewingGameMenu:
+				HandleGameMenuInput();
+				break;
+			case GameState.AlteringSettings:
+				HandleSetupMenuInput();
+				break;
+			case GameState.Deploying:
+				HandleDeploymentInput();
+				break;
+			case GameState.Discovering:
+				HandleDiscoveryInput();
+				break;
+			case GameState.EndingGame:
+				HandleEndOfGameInput();
+				break;
+			case GameState.ViewingHighScores:
+				HandleHighScoreInput();
+				break;
 		}
 
 		UpdateAnimations();
@@ -304,27 +311,27 @@ public static class GameController
 		DrawBackground();
 
 		switch (CurrentState) {
-		case GameState.ViewingMainMenu:
-			DrawMainMenu();
-			break;
-		case GameState.ViewingGameMenu:
-			DrawGameMenu();
-			break;
-		case GameState.AlteringSettings:
-			DrawSettings();
-			break;
-		case GameState.Deploying:
-			DrawDeployment();
-			break;
-		case GameState.Discovering:
-			DrawDiscovery();
-			break;
-		case GameState.EndingGame:
-			DrawEndOfGame();
-			break;
-		case GameState.ViewingHighScores:
-			DrawHighScores();
-			break;
+			case GameState.ViewingMainMenu:
+				DrawMainMenu();
+				break;
+			case GameState.ViewingGameMenu:
+				DrawGameMenu();
+				break;
+			case GameState.AlteringSettings:
+				DrawSettings();
+				break;
+			case GameState.Deploying:
+				DrawDeployment();
+				break;
+			case GameState.Discovering:
+				DrawDiscovery();
+				break;
+			case GameState.EndingGame:
+				DrawEndOfGame();
+				break;
+			case GameState.ViewingHighScores:
+				DrawHighScores();
+				break;
 		}
 
 		DrawAnimations();
@@ -371,3 +378,10 @@ public static class GameController
 	}
 
 }
+
+//=======================================================
+//Service provided by Telerik (www.telerik.com)
+//Conversion powered by NRefactory.
+//Twitter: @telerik
+//Facebook: facebook.com/telerik
+//=======================================================

@@ -1,3 +1,10 @@
+
+using Microsoft.VisualBasic;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+// using System.Data;
+using System.Diagnostics;
 /// <summary>
 /// Player has its own _PlayerGrid, and can see an _EnemyGrid, it can also check if
 /// all ships are deployed and if all ships are detroyed. A Player can also attach.
@@ -7,7 +14,7 @@ public class Player : IEnumerable<Ship>
 
 	protected static Random _Random = new Random();
 	private Dictionary<ShipName, Ship> _Ships = new Dictionary<ShipName, Ship>();
-	private SeaGrid _playerGrid = new SeaGrid(_Ships);
+	private SeaGrid _playerGrid;
 	private ISeaGrid _enemyGrid;
 
 	protected BattleShipsGame _game;
@@ -36,6 +43,7 @@ public class Player : IEnumerable<Ship>
 	public Player(BattleShipsGame controller)
 	{
 		_game = controller;
+    _playerGrid = new SeaGrid(_Ships);
 
 		//for each ship add the ships name so the seagrid knows about them
 		foreach (ShipName name in Enum.GetValues(typeof(ShipName))) {
@@ -70,7 +78,7 @@ public class Player : IEnumerable<Ship>
 	}
 
 	public bool IsDestroyed {
-		//Check if all ships are destroyed... -1 for the none ship
+//Check if all ships are destroyed... -1 for the none ship
 		get { return _playerGrid.ShipsKilled == Enum.GetValues(typeof(ShipName)).Length - 1; }
 	}
 
@@ -81,13 +89,11 @@ public class Player : IEnumerable<Ship>
 	/// <value>The ship</value>
 	/// <returns>The ship with the indicated name</returns>
 	/// <remarks>The none ship returns nothing/null</remarks>
-	public Ship Ship {
-		get {
-			if (name == ShipName.None)
-				return null;
+	public Ship Ship(ShipName name) {
+		if (name == ShipName.None)
+			return null;
 
-			return _Ships.Item(name);
-		}
+		return _Ships[name];
 	}
 
 	/// <summary>
@@ -178,13 +184,13 @@ public class Player : IEnumerable<Ship>
 		result = EnemyGrid.HitTile(row, col);
 
 		switch (result.Value) {
-		case ResultOfAttack.Destroyed:
-		case ResultOfAttack.Hit:
-			_hits += 1;
-			break;
-		case ResultOfAttack.Miss:
-			_misses += 1;
-			break;
+			case ResultOfAttack.Destroyed:
+			case ResultOfAttack.Hit:
+				_hits += 1;
+				break;
+			case ResultOfAttack.Miss:
+				_misses += 1;
+				break;
 		}
 
 		return result;
@@ -227,3 +233,10 @@ public class Player : IEnumerable<Ship>
 		}
 	}
 }
+
+//=======================================================
+//Service provided by Telerik (www.telerik.com)
+//Conversion powered by NRefactory.
+//Twitter: @telerik
+//Facebook: facebook.com/telerik
+//=======================================================

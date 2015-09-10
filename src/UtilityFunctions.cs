@@ -1,3 +1,10 @@
+
+using Microsoft.VisualBasic;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 /// <summary>
 /// This includes a number of utility methods for
 /// drawing and interacting with the Mouse.
@@ -70,7 +77,7 @@ static class UtilityFunctions
 	public static void DrawField(ISeaGrid grid, Player thePlayer, bool showShips)
 	{
 		DrawCustomField(grid, thePlayer, false, showShips, FIELD_LEFT, FIELD_TOP, FIELD_WIDTH, FIELD_HEIGHT, CELL_WIDTH, CELL_HEIGHT,
-			CELL_GAP);
+		CELL_GAP);
 	}
 
 	/// <summary>
@@ -89,7 +96,7 @@ static class UtilityFunctions
 		const int SMALL_FIELD_CELL_GAP = 4;
 
 		DrawCustomField(grid, thePlayer, true, true, SMALL_FIELD_LEFT, SMALL_FIELD_TOP, SMALL_FIELD_WIDTH, SMALL_FIELD_HEIGHT, SMALL_FIELD_CELL_WIDTH, SMALL_FIELD_CELL_HEIGHT,
-			SMALL_FIELD_CELL_GAP);
+		SMALL_FIELD_CELL_GAP);
 	}
 
 	/// <summary>
@@ -107,9 +114,9 @@ static class UtilityFunctions
 	/// <param name="cellHeight">the height of each cell</param>
 	/// <param name="cellGap">the gap between the cells</param>
 	private static void DrawCustomField(ISeaGrid grid, Player thePlayer, bool small, bool showShips, int left, int top, int width, int height, int cellWidth, int cellHeight,
-		int cellGap)
+	int cellGap)
 	{
-		SwinGame.FillRectangle(Color.Blue, left, top, width, height)
+		//SwinGame.FillRectangle(Color.Blue, left, top, width, height)
 
 		int rowTop = 0;
 		int colLeft = 0;
@@ -127,30 +134,29 @@ static class UtilityFunctions
 				draw = true;
 
 				switch (grid.Item(row, col)) {
-				case TileView.Ship:
-					draw = false;
-					break;
-					if (small Then fillColor = _SMALL_SHIP)
-					 else fillColor = _LARGE_SHIP;
-				case TileView.Miss:
-					if (small)
-						fillColor = SMALL_MISS;
-					else
-						fillColor = LARGE_MISS;
-					break;
-				case TileView.Hit:
-					if (small)
-						fillColor = SMALL_HIT;
-					else
-						fillColor = LARGE_HIT;
-					break;
-				case TileView.Sea:
-				case TileView.Ship:
-					if (small)
-						fillColor = SMALL_SEA;
-					else
+					case TileView.Ship:
 						draw = false;
-					break;
+						break;
+					//If small Then fillColor = _SMALL_SHIP Else fillColor = _LARGE_SHIP
+					case TileView.Miss:
+						if (small)
+							fillColor = SMALL_MISS;
+						else
+							fillColor = LARGE_MISS;
+						break;
+					case TileView.Hit:
+						if (small)
+							fillColor = SMALL_HIT;
+						else
+							fillColor = LARGE_HIT;
+						break;
+					case TileView.Sea:
+					case TileView.Ship:
+						if (small)
+							fillColor = SMALL_SEA;
+						else
+							draw = false;
+						break;
 				}
 
 				if (draw) {
@@ -224,22 +230,22 @@ static class UtilityFunctions
 	public static void DrawBackground()
 	{
 		switch (CurrentState) {
-		case GameState.ViewingMainMenu:
-		case GameState.ViewingGameMenu:
-		case GameState.AlteringSettings:
-		case GameState.ViewingHighScores:
-			SwinGame.DrawBitmap(GameImage("Menu"), 0, 0);
-			break;
-		case GameState.Discovering:
-		case GameState.EndingGame:
-			SwinGame.DrawBitmap(GameImage("Discovery"), 0, 0);
-			break;
-		case GameState.Deploying:
-			SwinGame.DrawBitmap(GameImage("Deploy"), 0, 0);
-			break;
-		default:
-			SwinGame.ClearScreen();
-			break;
+			case GameState.ViewingMainMenu:
+			case GameState.ViewingGameMenu:
+			case GameState.AlteringSettings:
+			case GameState.ViewingHighScores:
+				SwinGame.DrawBitmap(GameImage("Menu"), 0, 0);
+				break;
+			case GameState.Discovering:
+			case GameState.EndingGame:
+				SwinGame.DrawBitmap(GameImage("Discovery"), 0, 0);
+				break;
+			case GameState.Deploying:
+				SwinGame.DrawBitmap(GameImage("Deploy"), 0, 0);
+				break;
+			default:
+				SwinGame.ClearScreen();
+				break;
 		}
 
 		SwinGame.DrawFramerate(675, 585, GameFont("CourierSmall"));
@@ -308,3 +314,10 @@ static class UtilityFunctions
 		}
 	}
 }
+
+//=======================================================
+//Service provided by Telerik (www.telerik.com)
+//Conversion powered by NRefactory.
+//Twitter: @telerik
+//Facebook: facebook.com/telerik
+//=======================================================

@@ -1,16 +1,23 @@
+
+using Microsoft.VisualBasic;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+// using System.Data;
+using System.Diagnostics;
 /// <summary>
-/// Tile knows its location on the grid, if it is a ship and if it has been 
+/// Tile knows its location on the grid, if it is a ship and if it has been
 /// shot before
 /// </summary>
 public class Tile
 {
-	//the row value of the tile
+		//the row value of the tile
 	private readonly int _RowValue;
-	//the column value of the tile
+		//the column value of the tile
 	private readonly int _ColumnValue;
-	//the ship the tile belongs to
+		//the ship the tile belongs to
 	private Ship _Ship = null;
-	//the tile has been shot at
+		//the tile has been shot at
 	private bool _Shot = false;
 
 	/// <summary>
@@ -122,3 +129,10 @@ public class Tile
 		}
 	}
 }
+
+//=======================================================
+//Service provided by Telerik (www.telerik.com)
+//Conversion powered by NRefactory.
+//Twitter: @telerik
+//Facebook: facebook.com/telerik
+//=======================================================
