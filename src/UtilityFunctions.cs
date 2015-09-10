@@ -109,7 +109,7 @@ static class UtilityFunctions
 	private static void DrawCustomField(ISeaGrid grid, Player thePlayer, bool small, bool showShips, int left, int top, int width, int height, int cellWidth, int cellHeight,
 		int cellGap)
 	{
-		//SwinGame.FillRectangle(Color.Blue, left, top, width, height)
+		SwinGame.FillRectangle(Color.Blue, left, top, width, height)
 
 		int rowTop = 0;
 		int colLeft = 0;
@@ -130,7 +130,8 @@ static class UtilityFunctions
 				case TileView.Ship:
 					draw = false;
 					break;
-					//If small Then fillColor = _SMALL_SHIP Else fillColor = _LARGE_SHIP
+					if (small Then fillColor = _SMALL_SHIP)
+					 else fillColor = _LARGE_SHIP;
 				case TileView.Miss:
 					if (small)
 						fillColor = SMALL_MISS;
