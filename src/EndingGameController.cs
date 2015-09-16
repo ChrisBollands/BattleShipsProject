@@ -30,9 +30,19 @@ static class EndingGameController
 		DrawSmallField(HumanPlayer.PlayerGrid, HumanPlayer);
 
 		if (HumanPlayer.IsDestroyed) {
-			SwinGame.DrawTextLines("YOU LOSE!", Color.White, Color.Transparent, GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
+			SwinGame.LoadBitmapNamed ("loser", "YouLose.png");
+			Bitmap bmp = SwinGame.BitmapNamed ("loser");
+			float bmpX = (((float)SwinGame.ScreenWidth()/2) - ((float)SwinGame.BitmapWidth (bmp) / 2));
+			float bmpY = (((float)SwinGame.ScreenHeight()/2) - ((float)SwinGame.BitmapHeight (bmp) / 2));
+			SwinGame.DrawBitmap (bmp, bmpX, bmpY);
+			//SwinGame.DrawTextLines("YOU LOSE!", Color.White, Color.Transparent, GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 		} else {
-			SwinGame.DrawTextLines("-- WINNER --", Color.White, Color.Transparent, GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
+			SwinGame.LoadBitmapNamed ("winner", "YouWin.png");
+			Bitmap bmp = SwinGame.BitmapNamed ("winner");
+			float bmpX = (((float)SwinGame.ScreenWidth()/2) - ((float)SwinGame.BitmapWidth (bmp) / 2));
+			float bmpY = (((float)SwinGame.ScreenHeight()/2) - ((float)SwinGame.BitmapHeight (bmp) / 2));
+			SwinGame.DrawBitmap (bmp, bmpX, bmpY);
+			//SwinGame.DrawTextLines("-- WINNER --", Color.White, Color.Transparent, GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 		}
 	}
 
