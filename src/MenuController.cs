@@ -291,7 +291,7 @@ static class MenuController
 	{
 		switch (button) {
 			case SETUP_MENU_EASY_BUTTON:
-			SetDifficulty(AIOption.Easy);
+			GameController.SetDifficulty(AIOption.Easy);
 				break;
 			case SETUP_MENU_MEDIUM_BUTTON:
 			SetDifficulty(AIOption.Medium);
