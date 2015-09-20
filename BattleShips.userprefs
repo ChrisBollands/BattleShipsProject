@@ -1,7 +1,12 @@
 ﻿<Properties StartupItem="BattleShips.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Mac|x86" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="src\Model\Ship.cs">
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\DeploymentController.cs">
+>>>>>>> 111f289eb335fed4f0584da5c4799a3a74285e26
     <Files>
+<<<<<<< HEAD
       <File FileName="src\Model\AIPlayer.cs" Line="65" Column="68" />
       <File FileName="src\Model\AIHardPlayer.cs" Line="1" Column="1" />
       <File FileName="src\Model\AIMediumPlayer.cs" Line="35" Column="14" />
@@ -10,11 +15,18 @@
       <File FileName="src\MenuController.cs" Line="1" Column="1" />
       <File FileName="src\EndingGameController.cs" Line="1" Column="1" />
       <File FileName="src\DiscoveryController.cs" Line="1" Column="1" />
+<<<<<<< HEAD
       <File FileName="src\UtilityFunctions.cs" Line="230" Column="28" />
       <File FileName="src\GameController.cs" Line="47" Column="28" />
       <File FileName="src\Model\Player.cs" Line="199" Column="32" />
       <File FileName="src\Model\ShipName.cs" Line="1" Column="1" />
       <File FileName="src\Model\Ship.cs" Line="1" Column="1" />
+=======
+=======
+      <File FileName="src\Model\Player.cs" Line="22" Column="20" />
+      <File FileName="src\DeploymentController.cs" Line="110" Column="48" />
+>>>>>>> DeployPosition
+>>>>>>> 111f289eb335fed4f0584da5c4799a3a74285e26
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
