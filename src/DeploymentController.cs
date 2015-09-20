@@ -200,7 +200,7 @@ static class DeploymentController
 			int i = 0;
 			i = ((int) sn) / 1;
 
-			if (IsMouseInRectangle(SHIPS_LEFT, SHIPS_TOP+100 + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT)) {
+			if (IsMouseInRectangle(SHIPS_LEFT, SHIPS_TOP-100 + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT)) {
 				return sn;
 			}
 		}
