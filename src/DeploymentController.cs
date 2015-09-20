@@ -20,7 +20,7 @@ using static HighScoreController;
 /// </summary>
 static class DeploymentController
 {
-	private const int SHIPS_TOP = 122;
+	private const int SHIPS_TOP = 98;
 	private const int SHIPS_LEFT = 20;
 	private const int SHIPS_HEIGHT = 90;
 
@@ -200,7 +200,7 @@ static class DeploymentController
 			int i = 0;
 			i = ((int) sn) / 1;
 
-			if (IsMouseInRectangle(SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT)) {
+			if (IsMouseInRectangle(SHIPS_LEFT, SHIPS_TOP-50 + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT)) {
 				return sn;
 			}
 		}
