@@ -329,8 +329,9 @@ public static class GameController
 			case GameState.Deploying:
 				DrawDeployment();
 				break;
-			case GameState.Discovering:
-				DrawDiscovery();
+		case GameState.Discovering:
+			DrawDiscovery ();
+			DrawGameMenu ();
 				break;
 			case GameState.EndingGame:
 				DrawEndOfGame();
