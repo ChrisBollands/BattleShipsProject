@@ -268,6 +268,10 @@ static class UtilityFunctions
 		AddAnimation(row, col, "Splash");
 	}
 
+	public static void AddTen(int row, int col)
+	{
+		AddAnimation(row, col, "NumberTen");
+	}
 
 	private static List<Sprite> _Animations = new List<Sprite>();
 	private static void AddAnimation(int row, int col, string image)

@@ -129,6 +129,7 @@ public static class GameController
 	{
 		if (showAnimation) {
 			AddExplosion(row, column);
+			AddTen(row, column);
 		}
 
 		Audio.PlaySoundEffect(GameSound("Hit"));
